@@ -1,0 +1,31 @@
+---
+title: Bar Plot
+author: Ian Shelton
+date: '2017-12-13'
+slug: bar-plot
+categories: []
+tags: []
+---
+
+```{r}
+
+library(Lahman)
+library(ggplot2)
+library(sqldf)
+query<-"SELECT name,HR
+FROM Teams
+WHERE yearID=1980
+ORDER BY HR"
+
+result<-sqldf(query)
+  
+result$name<-factor(result$name, levels =result$name )
+
+ggplot()+
+  geom_bar(data =result,aes(x=name, y=HR),stat= 'identity',color="blue",fill="white" )+
+  coord_flip()+
+  ylab("homeruns")+
+  xlab("team")+
+  ggtitle("1980 Team Homerun Distribution")
+
+```

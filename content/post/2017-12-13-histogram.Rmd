@@ -1,0 +1,25 @@
+---
+title: Histogram
+author: Ian Shelton
+date: '2017-12-13'
+slug: histogram
+categories: []
+tags: []
+---
+
+```{r}
+
+library(Lahman)
+library(ggplot2)
+library(sqldf)
+query<-"SELECT weight
+FROM Master"
+
+result<-sqldf(query)
+
+ggplot()+
+  geom_histogram(data = result,aes(x=weight),color="blue",fill="white",bins=50)+
+  ggtitle("Body Weight Distribution for Baseball Players")
+## Warning: Removed 854 rows containing non-finite values (stat_bin).
+
+```

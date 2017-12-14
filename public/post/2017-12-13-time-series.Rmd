@@ -1,0 +1,27 @@
+---
+title: Time Series
+author: Ian Shelton
+date: '2017-12-13'
+slug: time-series
+categories: []
+tags: []
+---
+
+```{r}
+
+library(Lahman)
+library(ggplot2)
+library(sqldf)
+query<-"SELECT yearID,HR
+FROM Batting
+WHERE playerID='ruthba01'"
+
+result<-sqldf(query)
+
+ggplot()+
+  geom_line(data = result,aes(x=yearID,y=HR))+
+  ggtitle("Ruth's Homerun Titles Throughout the Years")+
+  xlab("Year")+
+  ylab("Homeruns")
+
+```

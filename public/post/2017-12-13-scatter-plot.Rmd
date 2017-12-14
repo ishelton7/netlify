@@ -1,0 +1,10 @@
+---
+title: Scatter Plot
+author: Ian Shelton
+date: '2017-12-13'
+slug: scatter-plot
+categories: []
+tags:
+  - Visualization
+---
+

@@ -1,0 +1,34 @@
+---
+title: Time Series
+author: Ian Shelton
+date: '2017-12-13'
+slug: time-series
+categories: []
+tags: []
+---
+
+
+
+<pre class="r"><code>library(Lahman)
+library(ggplot2)
+library(sqldf)</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object &#39;/Library/Frameworks/R.framework/Resources/modules//R_X11.so&#39;:
+##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
+##   Referenced from: /Library/Frameworks/R.framework/Resources/modules//R_X11.so
+##   Reason: image not found</code></pre>
+<pre><code>## Could not load tcltk.  Will use slower R code instead.</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR
+FROM Batting
+WHERE playerID=&#39;ruthba01&#39;&quot;
+
+result&lt;-sqldf(query)
+
+ggplot()+
+  geom_line(data = result,aes(x=yearID,y=HR))+
+  ggtitle(&quot;Ruth&#39;s Homerun Titles Throughout the Years&quot;)+
+  xlab(&quot;Year&quot;)+
+  ylab(&quot;Homeruns&quot;)</code></pre>
+<p><img src="/post/2017-12-13-time-series_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
